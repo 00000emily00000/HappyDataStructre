@@ -1,4 +1,3 @@
-```markdown
 # Homework Sorting Project
 
 此報告展示對多種排序算法進行的實作與性能分析。包括對以下排序算法的討論與實作：
