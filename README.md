@@ -149,8 +149,8 @@ for (int algo = 0; algo < 4; ++algo)
 
 測試資料的生成與執行時間如下：
 
+#### 生成隨機數列
 ```cpp
-# 生成隨機數列
 template<class T>
 void Permute(T* a, int n)
 {
@@ -159,8 +159,10 @@ void Permute(T* a, int n)
         swap(a[j], a[i]);
     }
 }
+```
 
-# 計算執行時間
+#### 計算執行時間
+```cpp
 void printMemoryUsage()
 {
     PROCESS_MEMORY_COUNTERS memInfo;
