@@ -115,34 +115,6 @@ void heapSort(vector<int>& arr, int n)
 }
 ```
 
-### Composite Sort
-
-```cpp
-for (int algo = 0; algo < 4; ++algo)
-{
-    vector<int> a = original;
-
-    auto start = high_resolution_clock::now();
-
-    switch (algo) {
-    case 0: insertionSort(a, n); break;
-    case 1: quickSort(a, 0, n - 1); break;
-    case 2: mergeSort(a, 0, n - 1); break;
-    case 3: heapSort(a, n); break;
-    }
-
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(end - start);
-    double elapsed = static_cast<double>(duration.count());
-
-    times[algo].push_back(elapsed);
-    if (elapsed > worst[algo]) {
-        worst[algo] = elapsed;
-        worstArr[algo] = a;
-    }
-}
-```
-
 ## 3. 性能測試
 
 ### 測試資料與執行時間
@@ -348,7 +320,36 @@ Pagefile Usage: 760 KB
 | Merge Sort     | 穩定：O(n log n) | 時間略長，但穩定性高 | 適合處理大型資料與穩定需求 |
 | Heap Sort      | 穩定：O(n log n) | 速度略慢於 Quick Sort，但穩定 | 記憶體表現不錯 |
 ```
+![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case.png)
+![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
+藉由以上得出在所有情況下皆能應對數值資料的新函式，Composite Sort。
+### Composite Sort
 
+```cpp
+for (int algo = 0; algo < 4; ++algo)
+{
+    vector<int> a = original;
+
+    auto start = high_resolution_clock::now();
+
+    switch (algo) {
+    case 0: insertionSort(a, n); break;
+    case 1: quickSort(a, 0, n - 1); break;
+    case 2: mergeSort(a, 0, n - 1); break;
+    case 3: heapSort(a, n); break;
+    }
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+    double elapsed = static_cast<double>(duration.count());
+
+    times[algo].push_back(elapsed);
+    if (elapsed > worst[algo]) {
+        worst[algo] = elapsed;
+        worstArr[algo] = a;
+    }
+}
+```
 ### 計時方法與精度
 
 我們使用 `srand(time(0))` 函數來計算每個排序算法的執行時間，精度為秒。為了提高準確度，測試進行了多次執行，並取平均值。
@@ -363,6 +364,5 @@ Pagefile Usage: 760 KB
 
 根據測試結果，**Composite Sort** 是在大多數情況下最優的排序算法，尤其在數列較大時表現出色。每種排序算法在不同的數列長度和排列情況下都有其優勢，選擇合適的排序方法能大幅提升效率。
 
-![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case.png)
-![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
+
 
