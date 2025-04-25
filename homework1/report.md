@@ -319,7 +319,7 @@ Pagefile Usage: 760 KB
 
 根據測試結果，我們可以將每個排序算法的實際時間與理論上的時間複雜度進行對比。根據不同的 n 值，結果顯示各排序法的時間複雜度與預期結果相符。
 
-```
+
 | 演算法         | 理論時間複雜度                        | 實驗結果趨勢                          | 備註                                      |
 |----------------|----------------------------------------|---------------------------------------|-------------------------------------------|
 | Insertion Sort | 最好：O(n)，最壞：O(n²)                | 隨 n 線性上升（明顯）                | 適合資料小、幾乎排序好的情況             |
@@ -327,7 +327,7 @@ Pagefile Usage: 760 KB
 | Merge Sort     | 穩定：O(n log n)                       | 時間略長，但穩定性高                  | 適合處理大型資料與穩定需求               |
 | Heap Sort      | 穩定：O(n log n)                       | 速度略慢於 Quick Sort，但穩定        | 記憶體表現不錯                            |
 
-```
+
 ![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case.png)
 ![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
 藉由以上得出在所有情況下皆能應對數值資料的新函式，Composite Sort。
