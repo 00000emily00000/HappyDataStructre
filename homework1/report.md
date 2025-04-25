@@ -363,5 +363,5 @@ Pagefile Usage: 760 KB
 根據測試結果，**Composite Sort** 是在大多數情況下最優的排序算法，尤其在數列較大時表現出色。每種排序算法在不同的數列長度和排列情況下都有其優勢，選擇合適的排序方法能大幅提升效率。
 
 ![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case.png)
-![average-case 折線圖](homework1/src/Image/average-case.png)
+![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
 
