@@ -51,74 +51,68 @@ void insertionSort(vector<int>& arr, int n)
 
 ### Quick Sort (使用 median-of-three 方法選擇privot)
 
-```python
-def quick_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = median_of_three(arr)
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
-
-def median_of_three(arr):
-    first = arr[0]
-    middle = arr[len(arr) // 2]
-    last = arr[-1]
-    return sorted([first, middle, last])[1]
+```cpp
+void quickSort(vector<int>& arr, int left, int right)
+{
+    if (left >= right) return;
+    int pivot = arr[(left + right) / 2];
+    int i = left, j = right;
+    while (i <= j) {
+        while (arr[i] < pivot) i++;
+        while (arr[j] > pivot) j--;
+        if (i <= j) swap(arr[i++], arr[j--]);
+    }
+    quickSort(arr, left, j);
+    quickSort(arr, i, right);
+}
 ```
 
 ### Merge Sort (使用迭代方法)
 
-```python
-def merge_sort(arr):
-    width = 1
-    while width < len(arr):
-        for i in range(0, len(arr), width * 2):
-            left = arr[i:i + width]
-            right = arr[i + width:i + width * 2]
-            arr[i:i + width * 2] = merge(left, right)
-        width *= 2
-    return arr
+```cpp
+void merge(vector<int>& arr, int l, int m, int r)
+{
+    int n1 = m - l + 1, n2 = r - m;
+    vector<int> L(arr.begin() + l, arr.begin() + m + 1), R(arr.begin() + m + 1, arr.begin() + r + 1);
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
 
-def merge(left, right):
-    result = []
-    i, j = 0, 0
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-    result.extend(left[i:])
-    result.extend(right[j:])
-    return result
+void mergeSort(vector<int>& arr, int l, int r)
+{
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
 ```
 
 ### Heap Sort
 
-```python
-def heapify(arr, n, i):
-    largest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
-    if left < n and arr[left] > arr[largest]:
-        largest = left
-    if right < n and arr[right] > arr[largest]:
-        largest = right
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
+```cpp
+void heapify(vector<int>& arr, int n, int i)
+{
+    int largest = i, l = 2 * i + 1, r = 2 * i + 2;
+    if (l < n && arr[l] > arr[largest]) largest = l;
+    if (r < n && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
 
-def heap_sort(arr):
-    n = len(arr)
-    for i in range(n//2 - 1, -1, -1):
-        heapify(arr, n, i)
-    for i in range(n-1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]
-        heapify(arr, i, 0)
-    return arr
+void heapSort(vector<int>& arr, int n)
+{
+    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);
+    for (int i = n - 1; i > 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
 ```
 
 ### Composite Sort
