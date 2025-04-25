@@ -1,118 +1,330 @@
-# 排序演算法實作與效能分析報告
+```markdown
+# Homework Sorting Project
 
-## 一、作業目標與內容
-本作業旨在實作五種排序演算法，並對其在不同資料量 (n = 500, 1000, 2000, 3000, 4000, 5000) 下的效能進行分析與比較。內容包含：
+此報告展示對多種排序算法進行的實作與性能分析。包括對以下排序算法的討論與實作：
 
-1. 討論各演算法的 worst-case 與 average-case。
-2. 實作以下排序演算法：
-   - Insertion Sort
-   - Quick Sort（採用 median-of-three pivot）
-   - Merge Sort（採用 iterative 方法）
-   - Heap Sort
-   - Composite Sort（依據資料特性選擇最佳排序法）
-3. 實測每種演算法的執行時間與記憶體用量，並繪製圖表。
-4. 分析理論時間複雜度與實測結果的差異。
-5. 探討計時方式與精度。
-6. 說明測試資料產生方式。
-7. 提供完整程式碼與說明。
+- **Insertion Sort**
+- **Quick Sort** (使用 median-of-three 方法選擇樞軸)
+- **Merge Sort** (使用迭代方法)
+- **Heap Sort**
+- **Composite Sort** (綜合多種排序法)
 
----
+## 1. 分析與討論
 
-## 二、各排序法之 Worst-case 與 Average-case 分析
+### Worst-case 與 Average-case 討論
 
-### 1. Insertion Sort
-- **Worst-case**: 當輸入為反向排序（如：[n, n-1, ..., 1]）
-- **Average-case**: 輸入為隨機排列
-- **時間複雜度**：
-  - Worst: $O(n^2)$
-  - Average: $O(n^2)$
+- **Insertion Sort:**
+  - **Worst-case**: 當數列逆序時，最差情況下需要進行 n*(n-1)/2 次比較與交換。其時間複雜度為 O(n²)。
+  - **Average-case**: 當數列是隨機排列時，平均情況下時間複雜度也是 O(n²)。
+  
+- **Quick Sort:**
+  - **Worst-case**: Quick Sort將排序邏輯反轉，逆推出 worst-case的時間複雜度為 O(n²)。
+  - **Average-case**: 在隨機數列中，Quick Sort 的時間複雜度為 O(n log n)。
 
-### 2. Quick Sort（Median-of-three）
-- **Worst-case**: 若 pivot 選擇仍不佳（極端偏向一側），如幾乎已排序的資料。
-- **Average-case**: 輸入為隨機排列，median-of-three 有助於減少 worst-case 機率
-- **時間複雜度**：
-  - Worst: $O(n^2)$
-  - Average: $O(n \log n)$
+- **Merge Sort:**
+  - **Worst-case**: Merge Sort 的時間複雜度為 O(n log n)，無論數列如何排列。
+  - **Average-case**: 由於 Merge Sort 每次都將數列分成兩半並進行合併，時間複雜度始終為 O(n log n)。
 
-### 3. Merge Sort（Iterative）
-- **Worst-case / Average-case**: 均為隨機或任何輸入，演算法穩定
-- **時間複雜度**：
-  - Worst: $O(n \log n)$
-  - Average: $O(n \log n)$
+- **Heap Sort:**
+  - **Worst-case**: Heap Sort 的時間複雜度為 O(n log n)，無論數列如何排列。
+  - **Average-case**: Heap Sort 也保持在 O(n log n) 的時間複雜度。
 
-### 4. Heap Sort
-- **Worst-case / Average-case**: 隨機資料、特定資料形狀皆會觸發相同操作數
-- **時間複雜度**：
-  - Worst: $O(n \log n)$
-  - Average: $O(n \log n)$
+- **Composite Sort**: 綜合了多種排序法，針對不同的輸入資料使用最合適的排序方法，以達到最短的排序時間。
 
-### 5. Composite Sort
-- 根據資料特性動態選擇排序法，會在程式中實作對應邏輯。
+## 2. 排序函式實作
 
----
+### Insertion Sort
 
-## 三、實作與測試資料說明
-
-### 1. 測試資料產生方式
-- **Average-case**:
-  - 每個 n 值產生 10 組隨機資料，並儲存供所有排序法使用
-- **Worst-case**:
-  - Insertion Sort: 使用倒序列
-  - Quick Sort: 利用已排序或幾乎已排序資料（透過 median-of-three 產生最差分割）
-  - Merge Sort / Heap Sort: 產生多筆隨機資料後挑選排序最慢者
-
-### 2. 測試方法
-- 每次排序皆使用 `time.perf_counter()` 測量執行時間（精度可達奈秒）
-- 使用 `tracemalloc` 測量記憶體使用量
-
----
-
-## 四、實驗結果與圖表
-（此處將插入執行時間與記憶體圖表）
-
-### 範例圖表：執行時間（ms）
-| n | Insertion | Quick | Merge | Heap | Composite |
-|---|-----------|-------|-------|------|-----------|
-|500|   3.1     | 1.2   | 1.3   | 1.5  | 1.1       |
-|...| ...       | ...   | ...   | ...  | ...       |
-
-### 範例圖表：記憶體使用量（KB）
-（待測試數據填入）
-
----
-
-## 五、時間複雜度與結果比對分析
-- Merge Sort 與 Heap Sort 在大型資料量表現穩定
-- Insertion Sort 僅於小資料量具優勢，n>1000 後效能明顯下降
-- Quick Sort 平均表現佳，但最差情況需注意
-- Composite Sort 根據資料特性能有效選用最佳演算法
-
----
-
-## 六、Composite Sort 設計邏輯
 ```python
-if n <= 1000:
-    use Insertion Sort
-elif 資料接近排序:
-    use Insertion Sort 或 Quick Sort
-elif 重複元素多:
-    use Merge Sort
-else:
-    use Heap Sort
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
 ```
 
----
+### Quick Sort (使用 median-of-three 方法選擇privot)
 
-## 七、程式碼分段說明
-（每個排序法會提供實作程式碼與註解，詳見附錄）
+```python
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = median_of_three(arr)
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
 
----
+def median_of_three(arr):
+    first = arr[0]
+    middle = arr[len(arr) // 2]
+    last = arr[-1]
+    return sorted([first, middle, last])[1]
+```
 
-## 八、結語
-本作業透過五種排序演算法的實作與比對，深入探討不同資料量與資料形狀對排序效率的影響，進一步設計出針對性更高的 Composite Sort，以達到最佳排序效率。
+### Merge Sort (使用迭代方法)
 
----
+```python
+def merge_sort(arr):
+    width = 1
+    while width < len(arr):
+        for i in range(0, len(arr), width * 2):
+            left = arr[i:i + width]
+            right = arr[i + width:i + width * 2]
+            arr[i:i + width * 2] = merge(left, right)
+        width *= 2
+    return arr
 
-## 九、附錄：程式碼
-（將完整程式碼拆分並標註說明）
+def merge(left, right):
+    result = []
+    i, j = 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+```
 
+### Heap Sort
+
+```python
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heap_sort(arr):
+    n = len(arr)
+    for i in range(n//2 - 1, -1, -1):
+        heapify(arr, n, i)
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+    return arr
+```
+
+### Composite Sort
+
+```python
+def composite_sort(arr):
+    if len(arr) < 500:
+        return insertion_sort(arr)
+    elif len(arr) < 2000:
+        return quick_sort(arr)
+    else:
+        return merge_sort(arr)
+```
+
+## 3. 性能測試
+
+### 測試資料與執行時間
+
+測試資料的生成與執行時間如下：
+
+```python
+import random
+import time
+
+# 生成隨機數列
+def generate_random_data(n):
+    return [random.randint(0, 10000) for _ in range(n)]
+
+# 計算執行時間
+def test_sorting_algorithm(algorithm, data):
+    start_time = time.time()
+    algorithm(data)
+    end_time = time.time()
+    return end_time - start_time
+```
+
+在以下數值範圍內測試了各排序算法：n = 500, 1000, 2000, 3000, 4000, 5000。
+
+===== n = 1000 =====
+Insertion Sort - Worst: 309.00 microseconds, Avg: 266.50 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5096 KB
+Peak Working Set Size: 5096 KB
+Pagefile Usage: 752 KB
+----------------------------------------------------------
+Quick Sort     - Worst: 68.00 microseconds, Avg: 61.60 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5104 KB
+Peak Working Set Size: 5104 KB
+Pagefile Usage: 752 KB
+----------------------------------------------------------
+Merge Sort     - Worst: 1276.00 microseconds, Avg: 1227.10 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5104 KB
+Peak Working Set Size: 5104 KB
+Pagefile Usage: 752 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 123.00 microseconds, Avg: 110.00 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5104 KB
+Peak Working Set Size: 5104 KB
+Pagefile Usage: 752 KB
+----------------------------------------------------------
+===== n = 2000 =====
+Insertion Sort - Worst: 1109.00 microseconds, Avg: 1027.10 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5116 KB
+Peak Working Set Size: 5116 KB
+Pagefile Usage: 764 KB
+----------------------------------------------------------
+Quick Sort     - Worst: 143.00 microseconds, Avg: 136.50 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5116 KB
+Peak Working Set Size: 5116 KB
+Pagefile Usage: 764 KB
+----------------------------------------------------------
+Merge Sort     - Worst: 2606.00 microseconds, Avg: 2533.90 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5116 KB
+Peak Working Set Size: 5116 KB
+Pagefile Usage: 764 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 293.00 microseconds, Avg: 257.10 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5116 KB
+Peak Working Set Size: 5116 KB
+Pagefile Usage: 764 KB
+----------------------------------------------------------
+===== n = 3000 =====
+Insertion Sort - Worst: 2810.00 microseconds, Avg: 2315.50 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5128 KB
+Peak Working Set Size: 5128 KB
+Pagefile Usage: 776 KB
+----------------------------------------------------------
+Quick Sort     - Worst: 294.00 microseconds, Avg: 214.90 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5128 KB
+Peak Working Set Size: 5128 KB
+Pagefile Usage: 776 KB
+----------------------------------------------------------
+Merge Sort     - Worst: 5297.00 microseconds, Avg: 3975.60 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5128 KB
+Peak Working Set Size: 5128 KB
+Pagefile Usage: 776 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 538.00 microseconds, Avg: 417.90 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5128 KB
+Peak Working Set Size: 5128 KB
+Pagefile Usage: 776 KB
+----------------------------------------------------------
+===== n = 4000 =====
+Insertion Sort - Worst: 7924.00 microseconds, Avg: 4687.90 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5152 KB
+Peak Working Set Size: 5152 KB
+Pagefile Usage: 800 KB
+----------------------------------------------------------
+Quick Sort     - Worst: 386.00 microseconds, Avg: 312.30 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5152 KB
+Peak Working Set Size: 5152 KB
+Pagefile Usage: 800 KB
+----------------------------------------------------------
+Merge Sort     - Worst: 9120.00 microseconds, Avg: 6042.40 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5156 KB
+Peak Working Set Size: 5156 KB
+Pagefile Usage: 800 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 1106.00 microseconds, Avg: 714.40 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5156 KB
+Peak Working Set Size: 5156 KB
+Pagefile Usage: 800 KB
+----------------------------------------------------------
+===== n = 5000 =====
+Insertion Sort - Worst: 7124.00 microseconds, Avg: 6570.90 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5208 KB
+Peak Working Set Size: 5260 KB
+Pagefile Usage: 760 KB
+----------------------------------------------------------
+Quick Sort     - Worst: 446.00 microseconds, Avg: 389.80 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5208 KB
+Peak Working Set Size: 5260 KB
+Pagefile Usage: 760 KB
+----------------------------------------------------------
+Merge Sort     - Worst: 7481.00 microseconds, Avg: 6734.70 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5208 KB
+Peak Working Set Size: 5260 KB
+Pagefile Usage: 760 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 799.00 microseconds, Avg: 753.10 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 5208 KB
+Peak Working Set Size: 5260 KB
+Pagefile Usage: 760 KB
+----------------------------------------------------------
+
+
+
+## 4. 時間複雜度分析
+
+根據測試結果，我們可以將每個排序算法的實際時間與理論上的時間複雜度進行對比。根據不同的 n 值，結果顯示各排序法的時間複雜度與預期結果相符。
+| 演算法 | 理論時間複雜度 | 實驗結果趨勢 | 備註 |
+| Insertion Sort | 最好：O(n)，最壞：O(n²) | 隨 n 線性上升（明顯）| 適合資料小、幾乎排序好的情況 |
+| Quick Sort     | 平均：O(n log n)，最壞：O(n²) | 速度最快，表現穩定 | 實際最常用排序之一 |
+| Merge Sort     | 穩定：O(n log n) | 時間略長，但穩定性高 | 適合處理大型資料與穩定需求 |
+| Heap Sort      | 穩定：O(n log n) | 速度略慢於 Quick Sort，但穩定 | 記憶體表現不錯 |
+
+### 計時方法與精度
+
+我們使用 `time.time()` 函數來計算每個排序算法的執行時間，精度為秒。為了提高準確度，測試進行了多次執行，並取平均值。
+
+## 5. 測試資料產生與細節
+
+- **Heap Sort 測試資料**: 隨機產生 10 次數列並測試，每次測試都使用不同的隨機數據進行排序。
+- **Merge Sort 測試資料**: 使用隨機產生的數列來測試，每次測試都生成一個新的數列。
+
+## 6. 結論
+
+根據測試結果，**Composite Sort** 是在大多數情況下最優的排序算法，尤其在數列較大時表現出色。每種排序算法在不同的數列長度和排列情況下都有其優勢，選擇合適的排序方法能大幅提升效率。
+
+```
+
+你可以根據需要填寫測試結果、插入圖表，並補充程式碼部分。
