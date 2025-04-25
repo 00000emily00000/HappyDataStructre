@@ -117,14 +117,30 @@ void heapSort(vector<int>& arr, int n)
 
 ### Composite Sort
 
-```python
-def composite_sort(arr):
-    if len(arr) < 500:
-        return insertion_sort(arr)
-    elif len(arr) < 2000:
-        return quick_sort(arr)
-    else:
-        return merge_sort(arr)
+```cpp
+for (int algo = 0; algo < 4; ++algo)
+{
+    vector<int> a = original;
+
+    auto start = high_resolution_clock::now();
+
+    switch (algo) {
+    case 0: insertionSort(a, n); break;
+    case 1: quickSort(a, 0, n - 1); break;
+    case 2: mergeSort(a, 0, n - 1); break;
+    case 3: heapSort(a, n); break;
+    }
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+    double elapsed = static_cast<double>(duration.count());
+
+    times[algo].push_back(elapsed);
+    if (elapsed > worst[algo]) {
+        worst[algo] = elapsed;
+        worstArr[algo] = a;
+    }
+}
 ```
 
 ## 3. 性能測試
