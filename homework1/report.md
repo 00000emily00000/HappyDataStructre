@@ -358,6 +358,9 @@ for (int algo = 0; algo < 4; ++algo)
     }
 }
 ```
+![worst-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case new.png)
+![average-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case new.png)
+
 ### 計時方法與精度
 
 我們使用 `srand(time(0))` 函數來計算每個排序算法的執行時間，精度為秒。為了提高準確度，測試進行了多次執行，並取平均值。
