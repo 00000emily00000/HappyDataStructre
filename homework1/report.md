@@ -315,9 +315,9 @@ Pagefile Usage: 760 KB
 ```
 
 
-## 4. 時間複雜度分析
+## 4. 時間與空間複雜度分析
 
-根據測試結果，我們可以將每個排序算法的實際時間與理論上的時間複雜度進行對比。根據不同的 n 值，結果顯示各排序法的時間複雜度與預期結果相符。
+根據測試結果，我們可以將每個排序算法的實際時間與理論上的時間複雜度進行對比。根據不同的 n 值，結果顯示各排序法的時間複雜度與預期結果相符。空間複雜度亦然。
 
 
 | 演算法         | 理論時間複雜度                        | 實驗結果趨勢                          | 備註                                      |
@@ -327,6 +327,13 @@ Pagefile Usage: 760 KB
 | Merge Sort     | 穩定：O(n log n)                       | 時間略長，但穩定性高                  | 適合處理大型資料與穩定需求               |
 | Heap Sort      | 穩定：O(n log n)                       | 速度略慢於 Quick Sort，但穩定        | 記憶體表現不錯                            |
 
+記憶體使用分析
+| 排序演算法       | 空間複雜度    | 是否原地排序 | 額外記憶體需求說明                         | 推論記憶體使用量 |
+|------------------|----------------|---------------|--------------------------------------------|------------------|
+| Insertion Sort   | O(1)           | 是         | 僅使用常數變數 `key`, `j` 等               |最低           |
+| Quick Sort       | O(log n) ~ O(n)| 是         | 使用遞迴，最差情況下棧深可達 O(n)         |中等           |
+| Merge Sort       | O(n)           | 否         | 每層合併需建立兩個額外子陣列               |最高           |
+| Heap Sort        | O(1)           | 是         | 透過 heapify 操作原地調整                  |很低           |
 
 ![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case.png)
 ![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
