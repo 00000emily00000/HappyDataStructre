@@ -358,7 +358,7 @@ for (int algo = 0; algo < 4; ++algo)
     }
 }
 ```
-![worst-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case%new.png)
+![worst-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case%20new.png)
 ![average-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case%new.png)
 
 ### 計時方法與精度
