@@ -149,20 +149,39 @@ for (int algo = 0; algo < 4; ++algo)
 
 測試資料的生成與執行時間如下：
 
-```python
-import random
-import time
-
+```cpp
 # 生成隨機數列
-def generate_random_data(n):
-    return [random.randint(0, 10000) for _ in range(n)]
+template<class T>
+void Permute(T* a, int n)
+{
+    for (int i = n - 1; i >= 1; i--) {
+        int j = rand() % (i + 1);
+        swap(a[j], a[i]);
+    }
+}
 
 # 計算執行時間
-def test_sorting_algorithm(algorithm, data):
-    start_time = time.time()
-    algorithm(data)
-    end_time = time.time()
-    return end_time - start_time
+void printMemoryUsage()
+{
+    PROCESS_MEMORY_COUNTERS memInfo;
+    GetProcessMemoryInfo(GetCurrentProcess(), &memInfo, sizeof(memInfo));
+    cout << "----------------------------------------------------------" << endl;
+    cout << "Memory Usage Information:" << endl;
+    cout << "Working Set Size: " << memInfo.WorkingSetSize / 1024 << " KB" << endl;
+    cout << "Peak Working Set Size: " << memInfo.PeakWorkingSetSize / 1024 << " KB" << endl;
+    cout << "Pagefile Usage: " << memInfo.PagefileUsage / 1024 << " KB" << endl;
+    cout << "----------------------------------------------------------" << endl;
+}
+
+const char* names[] = { "Insertion Sort", "Quick Sort    ", "Merge Sort    ", "Heap Sort     " };
+for (int i = 0; i < 4; ++i)
+{
+    double avg = 0;
+    for (double x : times[i]) avg += x;
+    avg /= times[i].size();
+    printf("%s - Worst: %.2f microseconds, Avg: %.2f microseconds\n", names[i], worst[i], avg);
+    printMemoryUsage();
+}
 ```
 
 在以下數值範圍內測試了各排序算法：n = 500, 1000, 2000, 3000, 4000, 5000。
