@@ -335,8 +335,8 @@ Pagefile Usage: 760 KB
 | Merge Sort       | O(n)           | 否         | 每層合併需建立兩個額外子陣列               |最高           |
 | Heap Sort        | O(1)           | 是         | 透過 heapify 操作原地調整                  |很低           |
 
-![worst-case 折線圖]()
-![average-case 折線圖]()
+![worst-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case%20new.png)
+![average-case 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case.png)
 藉由以上得出在所有情況下皆能應對數值資料的新函式，Composite Sort。
 ### Composite Sort
 
@@ -365,8 +365,8 @@ for (int algo = 0; algo < 4; ++algo)
     }
 }
 ```
-![worst-case new 折線圖]()
-![average-case new 折線圖]()
+![worst-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/worst-case%20new.png)
+![average-case new 折線圖](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework1/src/Image/average-case%20new.png)
 
 ### 計時方法與精度
 
