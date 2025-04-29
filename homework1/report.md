@@ -138,6 +138,32 @@ void Permute(T* a, int n)
 }
 ```
 
+#### 建立Insertion Sort Worst-Case數列
+```cpp
+template<class T>
+vector<int> original(n);
+for (int i = 0; i < n; ++i)
+  original[i] = i;
+```
+
+#### 建立Merge Sort Worst-Case數列
+```cpp
+void buildMergeWorstCase(vector<int>& a, int left, int right)
+{
+    if (right - left <= 0) return;
+    int mid = (left + right) / 2;
+    vector<int> temp(right - left + 1);
+    int idx = 0;
+    for (int i = left; i <= right; ++i) temp[idx++] = a[i];
+    for (int i = 0; i <= right - left; ++i) {
+        if (i % 2 == 0) a[left + i / 2] = temp[i];
+        else a[mid + 1 + i / 2] = temp[i];
+    }
+    buildMergeWorstCase(a, left, mid);
+    buildMergeWorstCase(a, mid + 1, right);
+}
+```
+
 #### 計算執行時間
 ```cpp
 void printMemoryUsage()
