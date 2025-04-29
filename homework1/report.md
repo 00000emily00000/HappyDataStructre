@@ -167,149 +167,149 @@ for (int i = 0; i < 4; ++i)
 
 ```
 ===== n = 1000 =====
-Insertion Sort - Worst: 309.00 microseconds, Avg: 266.50 microseconds
+Insertion Sort - Worst: 2948.00 microseconds, Avg: 2791.00 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5096 KB
-Peak Working Set Size: 5096 KB
-Pagefile Usage: 752 KB
+Working Set Size: 4704 KB
+Peak Working Set Size: 4704 KB
+Pagefile Usage: 732 KB
 ----------------------------------------------------------
-Quick Sort     - Worst: 68.00 microseconds, Avg: 61.60 microseconds
-----------------------------------------------------------
-Memory Usage Information:
-Working Set Size: 5104 KB
-Peak Working Set Size: 5104 KB
-Pagefile Usage: 752 KB
-----------------------------------------------------------
-Merge Sort     - Worst: 1276.00 microseconds, Avg: 1227.10 microseconds
+Quick Sort     - Worst: 135.00 microseconds, Avg: 123.60 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5104 KB
-Peak Working Set Size: 5104 KB
-Pagefile Usage: 752 KB
+Working Set Size: 4712 KB
+Peak Working Set Size: 4712 KB
+Pagefile Usage: 732 KB
 ----------------------------------------------------------
-Heap Sort      - Worst: 123.00 microseconds, Avg: 110.00 microseconds
+Merge Sort     - Worst: 234.00 microseconds, Avg: 217.40 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5104 KB
-Peak Working Set Size: 5104 KB
-Pagefile Usage: 752 KB
+Working Set Size: 4712 KB
+Peak Working Set Size: 4712 KB
+Pagefile Usage: 732 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 304.00 microseconds, Avg: 278.50 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 4712 KB
+Peak Working Set Size: 4712 KB
+Pagefile Usage: 732 KB
 ----------------------------------------------------------
 ===== n = 2000 =====
-Insertion Sort - Worst: 1109.00 microseconds, Avg: 1027.10 microseconds
+Insertion Sort - Worst: 15555.00 microseconds, Avg: 13304.10 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5116 KB
-Peak Working Set Size: 5116 KB
-Pagefile Usage: 764 KB
+Working Set Size: 4752 KB
+Peak Working Set Size: 4752 KB
+Pagefile Usage: 772 KB
 ----------------------------------------------------------
-Quick Sort     - Worst: 143.00 microseconds, Avg: 136.50 microseconds
-----------------------------------------------------------
-Memory Usage Information:
-Working Set Size: 5116 KB
-Peak Working Set Size: 5116 KB
-Pagefile Usage: 764 KB
-----------------------------------------------------------
-Merge Sort     - Worst: 2606.00 microseconds, Avg: 2533.90 microseconds
+Quick Sort     - Worst: 397.00 microseconds, Avg: 326.40 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5116 KB
-Peak Working Set Size: 5116 KB
-Pagefile Usage: 764 KB
+Working Set Size: 4752 KB
+Peak Working Set Size: 4752 KB
+Pagefile Usage: 772 KB
 ----------------------------------------------------------
-Heap Sort      - Worst: 293.00 microseconds, Avg: 257.10 microseconds
+Merge Sort     - Worst: 820.00 microseconds, Avg: 661.20 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5116 KB
-Peak Working Set Size: 5116 KB
-Pagefile Usage: 764 KB
+Working Set Size: 4752 KB
+Peak Working Set Size: 4752 KB
+Pagefile Usage: 772 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 979.00 microseconds, Avg: 766.40 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 4752 KB
+Peak Working Set Size: 4752 KB
+Pagefile Usage: 772 KB
 ----------------------------------------------------------
 ===== n = 3000 =====
-Insertion Sort - Worst: 2810.00 microseconds, Avg: 2315.50 microseconds
+Insertion Sort - Worst: 36475.00 microseconds, Avg: 28660.10 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5128 KB
-Peak Working Set Size: 5128 KB
-Pagefile Usage: 776 KB
+Working Set Size: 4744 KB
+Peak Working Set Size: 4804 KB
+Pagefile Usage: 764 KB
 ----------------------------------------------------------
-Quick Sort     - Worst: 294.00 microseconds, Avg: 214.90 microseconds
-----------------------------------------------------------
-Memory Usage Information:
-Working Set Size: 5128 KB
-Peak Working Set Size: 5128 KB
-Pagefile Usage: 776 KB
-----------------------------------------------------------
-Merge Sort     - Worst: 5297.00 microseconds, Avg: 3975.60 microseconds
+Quick Sort     - Worst: 533.00 microseconds, Avg: 442.90 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5128 KB
-Peak Working Set Size: 5128 KB
-Pagefile Usage: 776 KB
+Working Set Size: 4744 KB
+Peak Working Set Size: 4804 KB
+Pagefile Usage: 764 KB
 ----------------------------------------------------------
-Heap Sort      - Worst: 538.00 microseconds, Avg: 417.90 microseconds
+Merge Sort     - Worst: 1404.00 microseconds, Avg: 861.10 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5128 KB
-Peak Working Set Size: 5128 KB
-Pagefile Usage: 776 KB
+Working Set Size: 4744 KB
+Peak Working Set Size: 4804 KB
+Pagefile Usage: 764 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 1368.00 microseconds, Avg: 1070.10 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 4744 KB
+Peak Working Set Size: 4804 KB
+Pagefile Usage: 764 KB
 ----------------------------------------------------------
 ===== n = 4000 =====
-Insertion Sort - Worst: 7924.00 microseconds, Avg: 4687.90 microseconds
+Insertion Sort - Worst: 54072.00 microseconds, Avg: 48732.60 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5152 KB
-Peak Working Set Size: 5152 KB
-Pagefile Usage: 800 KB
+Working Set Size: 4760 KB
+Peak Working Set Size: 4848 KB
+Pagefile Usage: 780 KB
 ----------------------------------------------------------
-Quick Sort     - Worst: 386.00 microseconds, Avg: 312.30 microseconds
-----------------------------------------------------------
-Memory Usage Information:
-Working Set Size: 5152 KB
-Peak Working Set Size: 5152 KB
-Pagefile Usage: 800 KB
-----------------------------------------------------------
-Merge Sort     - Worst: 9120.00 microseconds, Avg: 6042.40 microseconds
+Quick Sort     - Worst: 705.00 microseconds, Avg: 615.50 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5156 KB
-Peak Working Set Size: 5156 KB
-Pagefile Usage: 800 KB
+Working Set Size: 4760 KB
+Peak Working Set Size: 4848 KB
+Pagefile Usage: 780 KB
 ----------------------------------------------------------
-Heap Sort      - Worst: 1106.00 microseconds, Avg: 714.40 microseconds
+Merge Sort     - Worst: 1409.00 microseconds, Avg: 1159.00 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5156 KB
-Peak Working Set Size: 5156 KB
-Pagefile Usage: 800 KB
+Working Set Size: 4760 KB
+Peak Working Set Size: 4848 KB
+Pagefile Usage: 780 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 1656.00 microseconds, Avg: 1444.40 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 4760 KB
+Peak Working Set Size: 4848 KB
+Pagefile Usage: 780 KB
 ----------------------------------------------------------
 ===== n = 5000 =====
-Insertion Sort - Worst: 7124.00 microseconds, Avg: 6570.90 microseconds
+Insertion Sort - Worst: 86900.00 microseconds, Avg: 78553.40 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5208 KB
-Peak Working Set Size: 5260 KB
-Pagefile Usage: 760 KB
+Working Set Size: 4784 KB
+Peak Working Set Size: 4888 KB
+Pagefile Usage: 804 KB
 ----------------------------------------------------------
-Quick Sort     - Worst: 446.00 microseconds, Avg: 389.80 microseconds
-----------------------------------------------------------
-Memory Usage Information:
-Working Set Size: 5208 KB
-Peak Working Set Size: 5260 KB
-Pagefile Usage: 760 KB
-----------------------------------------------------------
-Merge Sort     - Worst: 7481.00 microseconds, Avg: 6734.70 microseconds
+Quick Sort     - Worst: 1315.00 microseconds, Avg: 881.50 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5208 KB
-Peak Working Set Size: 5260 KB
-Pagefile Usage: 760 KB
+Working Set Size: 4784 KB
+Peak Working Set Size: 4888 KB
+Pagefile Usage: 804 KB
 ----------------------------------------------------------
-Heap Sort      - Worst: 799.00 microseconds, Avg: 753.10 microseconds
+Merge Sort     - Worst: 2075.00 microseconds, Avg: 1512.60 microseconds
 ----------------------------------------------------------
 Memory Usage Information:
-Working Set Size: 5208 KB
-Peak Working Set Size: 5260 KB
-Pagefile Usage: 760 KB
+Working Set Size: 4784 KB
+Peak Working Set Size: 4888 KB
+Pagefile Usage: 804 KB
+----------------------------------------------------------
+Heap Sort      - Worst: 2688.00 microseconds, Avg: 1974.60 microseconds
+----------------------------------------------------------
+Memory Usage Information:
+Working Set Size: 4784 KB
+Peak Working Set Size: 4888 KB
+Pagefile Usage: 804 KB
 ----------------------------------------------------------
 ```
 
