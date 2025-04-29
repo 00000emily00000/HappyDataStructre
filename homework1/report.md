@@ -76,23 +76,22 @@ void quickSort(vector<int>& arr, int left, int right)
 ### Merge Sort (使用迭代方法)
 
 ```cpp
-void merge(vector<int>& arr, int l, int m, int r)
+void merge(vector<int>& arr, int l, int m, int r, vector<int>& temp)
 {
-    int n1 = m - l + 1, n2 = r - m;
-    vector<int> L(arr.begin() + l, arr.begin() + m + 1), R(arr.begin() + m + 1, arr.begin() + r + 1);
-    int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
+    int i = l, j = m + 1, k = l;
+    while (i <= m && j <= r) temp[k++] = (arr[i] <= arr[j]) ? arr[i++] : arr[j++];
+    while (i <= m) temp[k++] = arr[i++];
+    while (j <= r) temp[k++] = arr[j++];
+    for (int x = l; x <= r; ++x) arr[x] = temp[x];
 }
 
-void mergeSort(vector<int>& arr, int l, int r)
+void mergeSort(vector<int>& arr, int l, int r, vector<int>& temp)
 {
     if (l < r) {
         int m = l + (r - l) / 2;
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+        mergeSort(arr, l, m, temp);
+        mergeSort(arr, m + 1, r, temp);
+        merge(arr, l, m, r, temp);
     }
 }
 ```
@@ -343,14 +342,17 @@ Pagefile Usage: 760 KB
 ```cpp
 for (int algo = 0; algo < 4; ++algo)
 {
-    vector<int> a = original;
-
+    vector<int> a = (algo == 1) ? qsInput : (algo == 2) ? msInput : original;
     auto start = high_resolution_clock::now();
 
     switch (algo) {
     case 0: insertionSort(a, n); break;
     case 1: quickSort(a, 0, n - 1); break;
-    case 2: mergeSort(a, 0, n - 1); break;
+    case 2: {
+        vector<int> temp(n);
+        mergeSort(a, 0, n - 1, temp);
+        break;
+    }
     case 3: heapSort(a, n); break;
     }
 
