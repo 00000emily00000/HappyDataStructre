@@ -104,7 +104,8 @@ public:
 
 #endif
 ```
-### main.cpp
+### 測試主程式 – main()
+此段程式用來測試 MinHeap<int> 類別的功能：
 ```cpp
 #include <iostream>
 #include "MinHeap.h"
