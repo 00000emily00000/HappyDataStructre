@@ -148,8 +148,6 @@ public:
 #endif // BST_H#pragma once
 ```
 
-### 隨機樹生成器
-
 ### BST.cpp
 ```cpp
 #include "BST.h"
@@ -270,6 +268,13 @@ void BST::clear() {
     root = nullptr;
 }
 ```
+
+### 隨機樹生成器
+```cpp
+std::random_device rd;
+std::mt19937 gen(rd());
+```
+
 ### BinarySearchTree.cpp
 ```cpp
 #include <iostream>
