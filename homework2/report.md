@@ -386,7 +386,20 @@ Part (a): Binary Search Tree Height Analysis
 Observation: The ratio height/log2(n) should be approximately constant around 2,
 confirming that the average height of a randomly built BST is O(log n).
 ```
+### 說明：
 
+- 使用隨機產生的整數，對不同資料筆數 `n`（100 到 10000）建立 Binary Search Tree（BST）。
+- 每棵樹皆透過 `insert()` 插入節點形成，資料順序為隨機。
+- 使用 `height()` 計算 BST 的高度，並比較理論高度 `log₂(n)`。
+- 計算 `Height / log₂(n)` 比值，以觀察平均樹高是否符合 O(log n)。
+
+### 結論：
+
+- 隨著節點數的增加，BST 高度與 log₂(n) 呈現接近線性關係。
+- 高度與 log₂(n) 的比值大多維持在約 2 左右。
+- 結論支持：**隨機建立的 BST 在平均情況下高度為 O(log n)**，結構相對平衡。
+
+---
 ### DeleteBinarySearchTree
 ```cpp
 #include <iostream>
@@ -445,6 +458,25 @@ Tree height after deletion: 4
 Deleting key 25 (node with one child)...
 Tree height after deletion: 4
 ```
+
+### 說明：
+- 建立初始 BST，插入節點如下：  
+  `{50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45}`  
+  → 此為一棵高度為 4 的完整 BST。
+- 接著分別刪除以下三種不同情況的節點，以驗證 `delete()` 函數邏輯：
+  1. 刪除「有兩個子節點」的節點（30）
+  2. 刪除「葉節點」（10）
+  3. 刪除「只有一個子節點」的節點（25）
+- 每次刪除後觀察 BST 的高度變化。
+  
+### 結論
+- BST 的 `delete()` 函數能正確處理三種情況的節點刪除：
+  1. **刪除有兩個子節點的節點**（如 30）：會尋找右子樹中的最小值替代，維持 BST 的順序性。
+  2. **刪除葉節點**（如 10）：直接刪除即可，無需重接子樹。
+  3. **刪除僅有一個子節點的節點**（如 25）：會讓該節點的子節點頂替其位置。
+- 執行後 BST 的高度皆維持不變（仍為 4），表示刪除操作對樹的整體結構影響極小。
+- 此實驗驗證了 BST 刪除操作的正確性與穩定性，並符合理論上 **平均 O(log n)** 的時間複雜度。
+  
 ---
 ## 第三題
 ![Exercise](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/Exercise.png)
