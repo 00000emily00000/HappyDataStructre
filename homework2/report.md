@@ -420,21 +420,19 @@ Tree height after deletion: 4
 
 ### 外部排序（External Sorting）Phase 2 分析
 
-### 🔹(a) 計算第二階段的輸入時間（Input Time）
+### (a) 計算第二階段的輸入時間（Input Time）
 - **每筆資料的磁碟讀取時間：**
     - Seek time = `1` 秒
     - Latency time = `4` 秒
     - 傳輸時間（Transmission time） = `t = 10^-3` 秒/record
-總時間（每筆）：`1 + 4 + 0.001 = 5.001` 秒
+    - 總時間（每筆）：`1 + 4 + 0.001 = 5.001` 秒
 
-#### 計算合併所需的輪數：
+- **計算合併所需的輪數：**
+    - 每輪最多合併 `k` 個 runs
+    - 所需合併輪數 ≈ `log_k(m)`
+    - 每輪要讀全部 `n` 筆資料
 
-- 每輪最多合併 `k` 個 runs
-- 所需合併輪數 ≈ `log_k(m)`
-- 每輪要讀全部 `n` 筆資料
-
-#### 輸入總時間公式：
-
+- **輸入總時間公式：**
 $$
 T_{\text{input}} = \log_k(64) \cdot 200000 \cdot (1 + 4 + 0.001) = \log_k(64) \cdot 200000 \cdot 5.001
 $$
