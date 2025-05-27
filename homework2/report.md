@@ -105,6 +105,11 @@ int main() {
     return 0;
 }
 ```
+### 執行結果
+```cpp
+1 3 5 8
+```
+
 ###  BST.h
 ```cpp
 #ifndef BST_H
