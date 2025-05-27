@@ -440,16 +440,17 @@ Tree height after deletion: 4
 
 #### 輸入總時間公式：
 
-\[
-T_{\text{input}} = \log_k(m) \cdot n \cdot (1 + 4 + t)
-= \log_k(64) \cdot 200000 \cdot 5.001
-\]
+$$
+T_{\text{input}} = \log_k(64) \cdot 200000 \cdot (1 + 4 + 0.001) = \log_k(64) \cdot 200000 \cdot 5.001
+$$
 
 ---
 
 #### ✅ (a) 最終答案：
 
-\[T_{\text{input}} = 200000 \cdot 5.001 \cdot \log_k(64)\]
+$$
+T_{\text{input}} = 200000 \cdot 5.001 \cdot \log_k(64)
+$$
 
 ---
 
@@ -493,9 +494,9 @@ T_{\text{input}} = \log_k(m) \cdot n \cdot (1 + 4 + t)
 
 - 第二階段輸入時間：
   
-  \[
-  T_{\text{input}} = 200000 \cdot 5.001 \cdot \log_k(64)
-  \]
+  $$
+T_{\text{input}} = 200000 \cdot 5.001 \cdot \log_k(64)
+$$
 
 - `k` 越大，輪數越少 ⇒ 輸入時間越短
 - `k` 的最大值由記憶體空間與 run 數決定
