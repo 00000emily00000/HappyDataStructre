@@ -9,7 +9,7 @@
 ![Max/Min Heap](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/MinHeap.png)
 
 ### 解題說明
-本作業實作一個最小優先佇列（Min Priority Queue），並以**最小堆積（Min Heap）**的資料結構來實現。整體程式共分為三個檔案：
+本作業實作一個最小優先佇列（Min Priority Queue），並以 **最小堆積（Min Heap）** 的資料結構來實現。整體程式共分為三個檔案：
 
 ### MinPQ.h-抽象類別定義
 這是一個模板抽象類別 MinPQ<T>，定義了最小優先佇列的基本操作介面，包括：
