@@ -388,6 +388,30 @@ void BST::clear() {
     root = nullptr;
 }
 ```
+### Part(A) 執行結果
+```cpp
+Part (a): Binary Search Tree Height Analysis
+==========================================
+
+       n    Height     log2(n) Height/log2(n)
+---------------------------------------------
+     100        14        6.64          2.107
+     500        23        8.97          2.565
+    1000        19        9.97          1.907
+    2000        24       10.97          2.189
+    3000        26       11.55          2.251
+    4000        27       11.97          2.256
+    5000        29       12.29          2.360
+    6000        27       12.55          2.151
+    7000        28       12.77          2.192
+    8000        32       12.97          2.468
+    9000        31       13.14          2.360
+   10000        28       13.29          2.107
+
+Observation: The ratio height/log2(n) should be approximately constant around 2,
+confirming that the average height of a randomly built BST is O(log n).
+```
+
 ### DeleteBinarySearchTree
 ```cpp
 #include <iostream>
