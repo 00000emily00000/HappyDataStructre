@@ -433,6 +433,7 @@ Tree height after deletion: 4
     - 每輪要讀全部 `n` 筆資料
 
 - **輸入總時間公式：**
+
 $$
 T_{\text{input}} = \log_k(64) \cdot 200000 \cdot (1 + 4 + 0.001) = \log_k(64) \cdot 200000 \cdot 5.001
 $$
