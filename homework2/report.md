@@ -6,6 +6,7 @@
 
 ---
 ## 第一題
+![Max/Min Heap](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/MinHeap.png)
 
 ### MinPQ.h
 ```cpp
