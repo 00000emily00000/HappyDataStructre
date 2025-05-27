@@ -270,122 +270,54 @@ void BST::clear() {
 ```
 ### BinarySearchTree.cpp
 ```cpp
+#include <iostream>
+#include <random>
+#include <vector>
+#include <cmath>
+#include <iomanip>
 #include "BST.h"
-#include <algorithm>
 
-// TreeNode constructor
-TreeNode::TreeNode(int k) : key(k), left(nullptr), right(nullptr) {}
+void analyzeHeight() {
+    std::cout << "Part (a): Binary Search Tree Height Analysis\n";
+    std::cout << "==========================================\n\n";
 
-// BST constructor
-BST::BST() : root(nullptr) {}
+    std::random_device rd;
+    std::mt19937 gen(rd());
 
-// BST destructor
-BST::~BST() {
-    deleteTree(root);
-}
+    std::vector<int> sizes = { 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000 };
 
-// Helper function to insert a node
-TreeNode* BST::insert(TreeNode* node, int key) {
-    if (node == nullptr) {
-        return new TreeNode(key);
-    }
+    std::cout << std::setw(8) << "n"
+        << std::setw(10) << "Height"
+        << std::setw(12) << "log2(n)"
+        << std::setw(15) << "Height/log2(n)" << std::endl;
+    std::cout << std::string(45, '-') << std::endl;
 
-    if (key < node->key) {
-        node->left = insert(node->left, key);
-    }
-    else if (key > node->key) {
-        node->right = insert(node->right, key);
-    }
-    // If key already exists, do nothing
+    for (int n : sizes) {
+        BST tree;
+        std::uniform_int_distribution<> dis(1, n * 10); // Generate random numbers
 
-    return node;
-}
-
-// Helper function to calculate height
-int BST::getHeight(TreeNode* node) {
-    if (node == nullptr) {
-        return 0;
-    }
-
-    int leftHeight = getHeight(node->left);
-    int rightHeight = getHeight(node->right);
-
-    return 1 + std::max(leftHeight, rightHeight);
-}
-
-// Helper function to find minimum value node
-TreeNode* BST::findMin(TreeNode* node) {
-    while (node && node->left) {
-        node = node->left;
-    }
-    return node;
-}
-
-// Helper function to delete a node
-TreeNode* BST::deleteNode(TreeNode* node, int key) {
-    if (node == nullptr) {
-        return node;
-    }
-
-    if (key < node->key) {
-        node->left = deleteNode(node->left, key);
-    }
-    else if (key > node->key) {
-        node->right = deleteNode(node->right, key);
-    }
-    else {
-        // Node to be deleted found
-
-        // Case 1: No child or only right child
-        if (node->left == nullptr) {
-            TreeNode* temp = node->right;
-            delete node;
-            return temp;
-        }
-        // Case 2: Only left child
-        else if (node->right == nullptr) {
-            TreeNode* temp = node->left;
-            delete node;
-            return temp;
+        // Insert n random values
+        for (int i = 0; i < n; i++) {
+            tree.insert(dis(gen));
         }
 
-        // Case 3: Two children
-        TreeNode* temp = findMin(node->right);
-        node->key = temp->key;
-        node->right = deleteNode(node->right, temp->key);
+        int height = tree.height();
+        double log2n = log2(n);
+        double ratio = height / log2n;
+
+        std::cout << std::setw(8) << n
+            << std::setw(10) << height
+            << std::setw(12) << std::fixed << std::setprecision(2) << log2n
+            << std::setw(15) << std::setprecision(3) << ratio << std::endl;
     }
 
-    return node;
+    std::cout << "\nObservation: The ratio height/log2(n) should be approximately constant around 2,\n";
+    std::cout << "confirming that the average height of a randomly built BST is O(log n).\n";
 }
 
-// Helper function to delete entire tree
-void BST::deleteTree(TreeNode* node) {
-    if (node != nullptr) {
-        deleteTree(node->left);
-        deleteTree(node->right);
-        delete node;
-    }
-}
-
-// Public function to insert a key
-void BST::insert(int key) {
-    root = insert(root, key);
-}
-
-// Public function to get tree height
-int BST::height() {
-    return getHeight(root);
-}
-
-// Public function to delete a key
-void BST::deleteKey(int key) {
-    root = deleteNode(root, key);
-}
-
-// Public function to clear the tree
-void BST::clear() {
-    deleteTree(root);
-    root = nullptr;
+int main() {
+    analyzeHeight();
+    return 0;
 }
 ```
 ### Part(A) 執行結果
