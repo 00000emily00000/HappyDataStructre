@@ -8,7 +8,17 @@
 ## 第一題
 ![Max/Min Heap](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/MinHeap.png)
 
-### MinPQ.h
+### 解題說明
+本作業實作一個最小優先佇列（Min Priority Queue），並以**最小堆積（Min Heap）**的資料結構來實現。整體程式共分為三個檔案：
+
+### MinPQ.h-抽象類別定義
+這是一個模板抽象類別 MinPQ<T>，定義了最小優先佇列的基本操作介面，包括：
+-IsEmpty()：檢查佇列是否為空
+-Top()：取得最小元素（具有最高優先權的元素）
+-Push(const T&)：插入新元素
+-Pop()：移除最小元素
+-虛擬解構函式，供繼承類別適當釋放資源
+
 ```cpp
 #ifndef MINPQ_H
 #define MINPQ_H
@@ -16,11 +26,11 @@
 template <class T>
 class MinPQ {
 public:
-    virtual ~MinPQ() {}                      // 虛擬解構函式
-    virtual bool IsEmpty() const = 0;        // 是否為空
-    virtual const T& Top() const = 0;        // 取最小值（min priority）
-    virtual void Push(const T&) = 0;         // 插入
-    virtual void Pop() = 0;                  // 移除最小值
+    virtual ~MinPQ() {}                      
+    virtual bool IsEmpty() const = 0;        
+    virtual const T& Top() const = 0;        
+    virtual void Push(const T&) = 0;         
+    virtual void Pop() = 0;                  
 };
 
 #endif
