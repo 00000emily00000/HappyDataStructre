@@ -148,6 +148,8 @@ public:
 #endif // BST_H#pragma once
 ```
 
+### 隨機樹生成器
+
 ### BST.cpp
 ```cpp
 #include "BST.h"
