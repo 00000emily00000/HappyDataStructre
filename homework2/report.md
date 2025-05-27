@@ -111,7 +111,7 @@ int main() {
 ```cpp
 1 3 5 8
 ```
-
+---
 ## 第二題
 ![Binary Search Tree](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/BinarySearchTree.png)
 
@@ -414,7 +414,7 @@ Tree height after deletion: 4
 Deleting key 25 (node with one child)...
 Tree height after deletion: 4
 ```
-
+---
 ## 第三題
 ![Exercise](https://github.com/00000emily00000/HappyDataStructre/blob/main/homework2/src/Image/Exercise.png)
 
