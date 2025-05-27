@@ -453,3 +453,20 @@ int main() {
     return 0;
 }
 ```
+### Part(B) 執行結果
+```cpp
+Part (b): Delete Function with Time Complexity Analysis
+======================================================
+
+Inserting values: 50 30 70 20 40 60 80 10 25 35 45
+Initial tree height: 4
+
+Deleting key 30 (node with two children)...
+Tree height after deletion: 4
+
+Deleting key 10 (leaf node)...
+Tree height after deletion: 4
+
+Deleting key 25 (node with one child)...
+Tree height after deletion: 4
+```
