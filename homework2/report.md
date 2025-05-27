@@ -421,7 +421,6 @@ Tree height after deletion: 4
 ### 外部排序（External Sorting）Phase 2 分析
 
 ### 🔹(a) 計算第二階段的輸入時間（Input Time）
-
 - **每筆資料的磁碟讀取時間：**
     - Seek time = `1` 秒
     - Latency time = `4` 秒
